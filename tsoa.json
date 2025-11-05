@@ -1,0 +1,30 @@
+{
+    "entryFile": "src/server.ts",
+    "noImplicitAdditionalProperties": "throw-on-extras",
+    "controllerPathGlobs": ["src/controllers/**/*.ts"],
+    "spec": {
+        "outputDirectory": "src/docs",
+        "specVersion": 3,
+        "specFileBaseName": "swagger",
+        "securityDefinitions": {
+            "app": {
+                "type": "apiKey",
+                "name": "X-App-ID",
+                "in": "header",
+                "description": "Application ID for API access"
+            },
+            "bearer": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT",
+                "description": "JWT token for authentication"
+            }
+        }
+    },
+    "routes": {
+        "routesDir": "src/routes",
+        "routesFileName": "routes.ts",
+        "authenticationModule": "src/authentication.ts",
+        "middleware": "express"
+    }
+}

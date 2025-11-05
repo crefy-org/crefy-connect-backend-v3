@@ -1,0 +1,1813 @@
+{
+	"openapi": "3.0.0",
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"SmsLoginResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"walletExists": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"success",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SmsLoginRequest": {
+				"properties": {
+					"phoneNumber": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"phoneNumber"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"VerifySmsOTPResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"properties": {
+							"userData": {
+								"type": "string"
+							},
+							"socialType": {
+								"type": "string"
+							},
+							"walletAddress": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"userData",
+							"socialType",
+							"walletAddress"
+						],
+						"type": "object"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"token": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"success",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"VerifySmsOTPRequest": {
+				"properties": {
+					"phoneNumber": {
+						"type": "string"
+					},
+					"otp": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"phoneNumber",
+					"otp"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResendSmsOTPResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"success",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResendSmsOTPRequest": {
+				"properties": {
+					"phoneNumber": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"phoneNumber"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ChainInfoResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"chains": {
+						"items": {
+							"properties": {
+								"rpcUrl": {
+									"type": "string"
+								},
+								"explorerUrl": {
+									"type": "string"
+								},
+								"currency": {
+									"type": "string"
+								},
+								"testnet": {
+									"type": "boolean"
+								},
+								"name": {
+									"type": "string"
+								},
+								"chainId": {
+									"type": "number",
+									"format": "double"
+								}
+							},
+							"required": [
+								"rpcUrl",
+								"explorerUrl",
+								"currency",
+								"testnet",
+								"name",
+								"chainId"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"success",
+					"chains"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SigningResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"signature": {
+						"type": "string"
+					},
+					"signedTransaction": {
+						"type": "string"
+					},
+					"error": {
+						"type": "string"
+					},
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					},
+					"chainName": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SignMessageRequest": {
+				"properties": {
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"chainId",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SignTransactionRequest": {
+				"properties": {
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					},
+					"to": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string"
+					},
+					"data": {
+						"type": "string"
+					},
+					"gasLimit": {
+						"type": "string"
+					},
+					"gasPrice": {
+						"type": "string"
+					},
+					"maxFeePerGas": {
+						"type": "string"
+					},
+					"maxPriorityFeePerGas": {
+						"type": "string"
+					},
+					"nonce": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"chainId",
+					"to",
+					"value",
+					"gasLimit"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TypedDataDomain": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"version": {
+						"type": "string"
+					},
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					},
+					"verifyingContract": {
+						"type": "string"
+					},
+					"salt": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TypedDataField": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"name",
+					"type"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Record_string.TypedDataField-Array_": {
+				"properties": {},
+				"additionalProperties": {
+					"items": {
+						"$ref": "#/components/schemas/TypedDataField"
+					},
+					"type": "array"
+				},
+				"type": "object",
+				"description": "Construct a type with a set of properties K of type T"
+			},
+			"Record_string.any_": {
+				"properties": {},
+				"additionalProperties": {},
+				"type": "object",
+				"description": "Construct a type with a set of properties K of type T"
+			},
+			"SignTypedDataRequest": {
+				"properties": {
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					},
+					"domain": {
+						"$ref": "#/components/schemas/TypedDataDomain"
+					},
+					"types": {
+						"$ref": "#/components/schemas/Record_string.TypedDataField-Array_"
+					},
+					"primaryType": {
+						"type": "string"
+					},
+					"message": {
+						"$ref": "#/components/schemas/Record_string.any_"
+					}
+				},
+				"required": [
+					"chainId",
+					"domain",
+					"types",
+					"primaryType",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SendSignedTransactionRequest": {
+				"properties": {
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					},
+					"signedTransaction": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"chainId",
+					"signedTransaction"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"VerifyMessageRequest": {
+				"properties": {
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					},
+					"message": {
+						"type": "string"
+					},
+					"signature": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"chainId",
+					"message",
+					"signature"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CheckSubnameResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"isClaimed": {
+						"type": "boolean"
+					},
+					"owner": {
+						"type": "string"
+					},
+					"node": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"success",
+					"isClaimed"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CheckSubnameRequest": {
+				"properties": {
+					"label": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"label"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ClaimSubnameResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					},
+					"node": {
+						"type": "string"
+					},
+					"transactionHash": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"success",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ClaimSubnameRequest": {
+				"properties": {
+					"label": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"label"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UserSubnamesResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"subnames": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"count": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"success",
+					"subnames",
+					"count"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AllSubnamesResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"subnames": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"count": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"success",
+					"subnames",
+					"count"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ServiceStatusResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"connected": {
+						"type": "boolean"
+					},
+					"contractOwner": {
+						"type": "string"
+					},
+					"parentNode": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"success",
+					"connected",
+					"contractOwner",
+					"parentNode"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EmailLoginResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"walletExists": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"success",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EmailLoginRequest": {
+				"properties": {
+					"email": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"VerifyOTPResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					},
+					"data": {
+						"properties": {
+							"userData": {
+								"type": "string"
+							},
+							"socialType": {
+								"type": "string"
+							},
+							"walletAddress": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"userData",
+							"socialType",
+							"walletAddress"
+						],
+						"type": "object"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"token": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"success",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"VerifyOTPRequest": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"otp": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email",
+					"otp"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResendOTPResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"success",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResendOTPRequest": {
+				"properties": {
+					"email": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"WalletResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"data": {
+						"properties": {
+							"wallet": {
+								"properties": {
+									"isActive": {
+										"type": "boolean"
+									},
+									"userData": {
+										"type": "string"
+									},
+									"address": {
+										"type": "string"
+									},
+									"socialType": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"isActive",
+									"userData",
+									"address",
+									"socialType",
+									"email"
+								],
+								"type": "object"
+							}
+						},
+						"required": [
+							"wallet"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"success",
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"app": {
+				"type": "apiKey",
+				"name": "X-App-ID",
+				"in": "header",
+				"description": "Application ID for API access"
+			},
+			"bearer": {
+				"type": "http",
+				"scheme": "bearer",
+				"bearerFormat": "JWT",
+				"description": "JWT token for authentication"
+			}
+		}
+	},
+	"info": {
+		"title": "crefy-connect-backend",
+		"version": "1.0.0",
+		"description": "Wallet authentication API with Express and TypeScript",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {
+			"name": "Jimleston Osoi"
+		}
+	},
+	"paths": {
+		"/auth/sms/login": {
+			"post": {
+				"operationId": "SmsLogin",
+				"responses": {
+					"200": {
+						"description": "OTP sent successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SmsLoginResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"message": "OTP sent to phone number for verification",
+											"isActive": false,
+											"walletExists": false
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Login or register with phone number\nSends OTP via SMS for verification",
+				"tags": [
+					"SMS Authentication"
+				],
+				"security": [
+					{
+						"app": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SmsLoginRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/sms/verify": {
+			"post": {
+				"operationId": "VerifySmsOTP",
+				"responses": {
+					"200": {
+						"description": "Wallet verified successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/VerifySmsOTPResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"message": "Wallet verified successfully",
+											"data": {
+												"walletAddress": "0x742E6B6D8B6C4e8D8e8D8e8D8e8D8e8D8e8D8e8D",
+												"socialType": "sms",
+												"userData": "{\"phoneNumber\":\"+1234567890\"}"
+											},
+											"isActive": true,
+											"token": "jwt-token-here"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Verify SMS OTP and activate wallet",
+				"tags": [
+					"SMS Authentication"
+				],
+				"security": [
+					{
+						"app": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/VerifySmsOTPRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/sms/resend-otp": {
+			"post": {
+				"operationId": "ResendSmsOTP",
+				"responses": {
+					"200": {
+						"description": "OTP resent successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ResendSmsOTPResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"message": "OTP resent to phone number for verification"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Resend OTP via SMS",
+				"tags": [
+					"SMS Authentication"
+				],
+				"security": [
+					{
+						"app": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ResendSmsOTPRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/signing/chains": {
+			"get": {
+				"operationId": "GetSupportedChains",
+				"responses": {
+					"200": {
+						"description": "Supported chains retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ChainInfoResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"chains": [
+												{
+													"chainId": 1,
+													"name": "Ethereum",
+													"testnet": false,
+													"currency": "ETH",
+													"explorerUrl": "https://etherscan.io",
+													"rpcUrl": "https://eth.llamarpc.com"
+												}
+											]
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get all supported chains",
+				"tags": [
+					"Signing Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/signing/chain-info": {
+			"get": {
+				"operationId": "GetChainInfo",
+				"responses": {
+					"200": {
+						"description": "Chain information retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"chain": {},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"chain",
+										"success"
+									],
+									"type": "object"
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Invalid chain ID"
+					}
+				},
+				"description": "Get chain information",
+				"tags": [
+					"Signing Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "chainId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/signing/sign-message": {
+			"post": {
+				"operationId": "SignMessage",
+				"responses": {
+					"200": {
+						"description": "Message signed successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SigningResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"signature": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+											"chainId": 1,
+											"chainName": "Ethereum"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Sign a message (EIP-191)",
+				"tags": [
+					"Signing Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SignMessageRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/signing/sign-transaction": {
+			"post": {
+				"operationId": "SignTransaction",
+				"responses": {
+					"200": {
+						"description": "Transaction signed successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SigningResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"signedTransaction": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+											"chainId": 1,
+											"chainName": "Ethereum"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Sign a transaction",
+				"tags": [
+					"Signing Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SignTransactionRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/signing/sign-typed-data": {
+			"post": {
+				"operationId": "SignTypedData",
+				"responses": {
+					"200": {
+						"description": "Typed data signed successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SigningResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"signature": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+											"chainId": 1,
+											"chainName": "Ethereum"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Sign typed data (EIP-712)",
+				"tags": [
+					"Signing Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SignTypedDataRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/signing/send-signed-transaction": {
+			"post": {
+				"operationId": "SendSignedTransaction",
+				"responses": {
+					"200": {
+						"description": "Transaction sent successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"error": {
+											"type": "string"
+										},
+										"transactionHash": {
+											"type": "string"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									],
+									"type": "object"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"transactionHash": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Send a signed transaction",
+				"tags": [
+					"Signing Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SendSignedTransactionRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/signing/verify-message": {
+			"post": {
+				"operationId": "VerifyMessage",
+				"responses": {
+					"200": {
+						"description": "Message verified successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"error": {
+											"type": "string"
+										},
+										"recoveredAddress": {
+											"type": "string"
+										},
+										"isValid": {
+											"type": "boolean"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"isValid",
+										"success"
+									],
+									"type": "object"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"isValid": true,
+											"recoveredAddress": "0x742E6B6D8B6C4e8D8e8D8e8D8e8D8e8D8e8D8e8D"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Verify a message signature",
+				"tags": [
+					"Signing Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/VerifyMessageRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/ens/subnames/check": {
+			"post": {
+				"operationId": "CheckSubname",
+				"responses": {
+					"200": {
+						"description": "Subname availability checked successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CheckSubnameResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"isClaimed": false,
+											"owner": "0x0000000000000000000000000000000000000000",
+											"node": "0x6d796e616d650000000000000000000000000000000000000000000000000000"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Invalid label"
+					},
+					"500": {
+						"description": "Service error"
+					}
+				},
+				"description": "Check if a subname is available",
+				"tags": [
+					"Ens Subname Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CheckSubnameRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/ens/subnames/claim": {
+			"post": {
+				"operationId": "ClaimSubname",
+				"responses": {
+					"200": {
+						"description": "Subname claimed successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ClaimSubnameResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"message": "Subname claimed successfully",
+											"node": "0x6d796e616d650000000000000000000000000000000000000000000000000000",
+											"transactionHash": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Subname already claimed or invalid input"
+					},
+					"500": {
+						"description": "Claim failed"
+					}
+				},
+				"description": "Claim subname\nNote: This requires a connected wallet with ETH <sepolia or mainet>",
+				"tags": [
+					"Ens Subname Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ClaimSubnameRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/ens/subnames/user": {
+			"get": {
+				"operationId": "GetUserSubnames",
+				"responses": {
+					"200": {
+						"description": "User subnames retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/UserSubnamesResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"subnames": [
+												"alice",
+												"bob",
+												"charlie"
+											],
+											"count": 3
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Invalid user address"
+					},
+					"500": {
+						"description": "Service error"
+					}
+				},
+				"description": "Get all subnames claimed by a user on Sepolia",
+				"tags": [
+					"Ens Subname Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "userAddress",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/ens/subnames/all": {
+			"get": {
+				"operationId": "GetAllSubnames",
+				"responses": {
+					"200": {
+						"description": "All subnames retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/AllSubnamesResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"subnames": [
+												"alice",
+												"bob",
+												"charlie",
+												"dave"
+											],
+											"count": 4
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Service error"
+					}
+				},
+				"description": "Get all registered subnames on Sepolia",
+				"tags": [
+					"Ens Subname Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/ens/subnames/status": {
+			"get": {
+				"operationId": "GetServiceStatus",
+				"responses": {
+					"200": {
+						"description": "Service status retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ServiceStatusResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"connected": true,
+											"contractOwner": "0x742E6B6D8B6C4e8D8e8D8e8D8e8D8e8D8e8D8e8D",
+											"parentNode": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
+										}
+									}
+								}
+							}
+						}
+					},
+					"500": {
+						"description": "Service error"
+					}
+				},
+				"description": "Get Sepolia service status and contract information",
+				"tags": [
+					"Ens Subname Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/ens/subnames/has-claimed": {
+			"get": {
+				"operationId": "HasUserClaimedSubname",
+				"responses": {
+					"200": {
+						"description": "Claim status checked successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"hasClaimed": {
+											"type": "boolean"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"hasClaimed",
+										"success"
+									],
+									"type": "object"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"hasClaimed": true
+										}
+									}
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Invalid user address"
+					},
+					"500": {
+						"description": "Service error"
+					}
+				},
+				"description": "Check if user has claimed any subnames on Sepolia",
+				"tags": [
+					"Ens Subname Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "userAddress",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/ens/subnames/network-info": {
+			"get": {
+				"operationId": "GetNetworkInfo",
+				"responses": {
+					"200": {
+						"description": "Network information retrieved",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"testnet": {
+											"type": "boolean"
+										},
+										"blockExplorer": {
+											"type": "string"
+										},
+										"chainId": {
+											"type": "number",
+											"format": "double"
+										},
+										"network": {
+											"type": "string"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"testnet",
+										"blockExplorer",
+										"chainId",
+										"network",
+										"success"
+									],
+									"type": "object"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"network": "Sepolia",
+											"chainId": 11155111,
+											"blockExplorer": "https://sepolia.etherscan.io",
+											"testnet": true
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get Sepolia network information",
+				"tags": [
+					"Ens Subname Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/auth/email/login": {
+			"post": {
+				"operationId": "EmailLogin",
+				"responses": {
+					"200": {
+						"description": "OTP sent successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/EmailLoginResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"message": "OTP sent to email for verification",
+											"isActive": false,
+											"walletExists": false
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Login or register with email\nSends OTP to email for verification",
+				"tags": [
+					"Email Authentication"
+				],
+				"security": [
+					{
+						"app": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/EmailLoginRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/email/verify": {
+			"post": {
+				"operationId": "VerifyOTP",
+				"responses": {
+					"200": {
+						"description": "Wallet verified successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/VerifyOTPResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"message": "Wallet verified successfully",
+											"data": {
+												"walletAddress": "0x742E6B6D8B6C4e8D8e8D8e8D8e8D8e8D8e8D8e8D",
+												"socialType": "email",
+												"userData": "{\"email\":\"user@example.com\"}"
+											},
+											"isActive": true,
+											"token": "jwt-token-here"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Verify OTP and activate wallet",
+				"tags": [
+					"Email Authentication"
+				],
+				"security": [
+					{
+						"app": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/VerifyOTPRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/email/resend-otp": {
+			"post": {
+				"operationId": "ResendOTP",
+				"responses": {
+					"200": {
+						"description": "OTP resent successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ResendOTPResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"message": "OTP resent to email for verification"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Resend OTP to email",
+				"tags": [
+					"Email Authentication"
+				],
+				"security": [
+					{
+						"app": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ResendOTPRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/auth/wallet-info": {
+			"get": {
+				"operationId": "GetWalletInfo",
+				"responses": {
+					"200": {
+						"description": "Wallet information retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/WalletResponse"
+								}
+							}
+						}
+					}
+				},
+				"description": "Get wallet information for the authenticated wallet",
+				"tags": [
+					"Authentication"
+				],
+				"security": [
+					{
+						"bearer": []
+					}
+				],
+				"parameters": []
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}

@@ -1,0 +1,6 @@
+# Husky
+.husky/_/*
+!.husky/_/.gitkeep
+node_modules
+dist
+.env
