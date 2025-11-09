@@ -378,9 +378,8 @@ export class SmsAuthController extends Controller {
 
     private async sendWelcomeSMS(phoneNumber: string): Promise<void> {
         try {
-            const smsResult = await this.smsService.sendWelcomeMessage(
-                phoneNumber,
-            );
+            const smsResult =
+                await this.smsService.sendWelcomeMessage(phoneNumber);
 
             if (!smsResult.success) {
                 console.warn('Welcome SMS failed to send:', smsResult.error);

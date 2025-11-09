@@ -194,9 +194,8 @@ class ENSSubnameService {
             };
 
             // Sign transaction
-            const signedTransaction = await account.signTransaction(
-                transaction,
-            );
+            const signedTransaction =
+                await account.signTransaction(transaction);
 
             // Send raw transaction
             const hash = await this.publicClient.sendRawTransaction({

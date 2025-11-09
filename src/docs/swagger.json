@@ -7,6 +7,327 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
+			"SendTransactionResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"transactionHash": {
+						"type": "string"
+					},
+					"fromAddress": {
+						"type": "string"
+					},
+					"toAddress": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string"
+					},
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					},
+					"chainName": {
+						"type": "string"
+					},
+					"tokenAddress": {
+						"type": "string"
+					},
+					"error": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"success",
+					"fromAddress",
+					"toAddress",
+					"value",
+					"chainId",
+					"chainName"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SendTransactionRequest": {
+				"properties": {
+					"fromAddress": {
+						"type": "string"
+					},
+					"toAddress": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string"
+					},
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					},
+					"tokenAddress": {
+						"type": "string"
+					},
+					"gasLimit": {
+						"type": "string"
+					},
+					"maxFeePerGas": {
+						"type": "string"
+					},
+					"maxPriorityFeePerGas": {
+						"type": "string"
+					},
+					"nonce": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"fromAddress",
+					"toAddress",
+					"value",
+					"chainId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TokenTransfer": {
+				"properties": {
+					"tokenAddress": {
+						"type": "string"
+					},
+					"from": {
+						"type": "string"
+					},
+					"to": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string"
+					},
+					"tokenSymbol": {
+						"type": "string"
+					},
+					"tokenDecimals": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"tokenAddress",
+					"from",
+					"to",
+					"value",
+					"tokenSymbol",
+					"tokenDecimals"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Transaction": {
+				"properties": {
+					"hash": {
+						"type": "string"
+					},
+					"from": {
+						"type": "string"
+					},
+					"to": {
+						"type": "string"
+					},
+					"value": {
+						"type": "string"
+					},
+					"timestamp": {
+						"type": "number",
+						"format": "double"
+					},
+					"blockNumber": {
+						"type": "number",
+						"format": "double"
+					},
+					"status": {
+						"type": "string",
+						"enum": [
+							"success",
+							"failed",
+							"pending"
+						]
+					},
+					"gasUsed": {
+						"type": "string"
+					},
+					"gasPrice": {
+						"type": "string"
+					},
+					"tokenTransfers": {
+						"items": {
+							"$ref": "#/components/schemas/TokenTransfer"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"hash",
+					"from",
+					"to",
+					"value",
+					"timestamp",
+					"blockNumber",
+					"status",
+					"gasUsed",
+					"gasPrice"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TransactionHistoryResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"transactions": {
+						"items": {
+							"$ref": "#/components/schemas/Transaction"
+						},
+						"type": "array"
+					},
+					"walletAddress": {
+						"type": "string"
+					},
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					},
+					"chainName": {
+						"type": "string"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"limit": {
+						"type": "number",
+						"format": "double"
+					},
+					"total": {
+						"type": "number",
+						"format": "double"
+					},
+					"error": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"success",
+					"transactions",
+					"walletAddress",
+					"chainId",
+					"chainName",
+					"page",
+					"limit",
+					"total"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TransactionHistoryRequest": {
+				"properties": {
+					"walletAddress": {
+						"type": "string"
+					},
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					},
+					"page": {
+						"type": "number",
+						"format": "double"
+					},
+					"limit": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"walletAddress",
+					"chainId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GasPriceResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"gasPrice": {
+						"type": "string"
+					},
+					"maxFeePerGas": {
+						"type": "string"
+					},
+					"maxPriorityFeePerGas": {
+						"type": "string"
+					},
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					},
+					"chainName": {
+						"type": "string"
+					},
+					"error": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"success",
+					"chainId",
+					"chainName"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TransactionStatusResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"transactionHash": {
+						"type": "string"
+					},
+					"status": {
+						"type": "string",
+						"enum": [
+							"success",
+							"failed",
+							"pending"
+						]
+					},
+					"blockNumber": {
+						"type": "number",
+						"format": "double"
+					},
+					"confirmations": {
+						"type": "number",
+						"format": "double"
+					},
+					"gasUsed": {
+						"type": "string"
+					},
+					"error": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"success",
+					"transactionHash",
+					"status",
+					"confirmations"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"SmsLoginResponse": {
 				"properties": {
 					"success": {
@@ -644,6 +965,287 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"NativeCurrency": {
+				"properties": {
+					"name": {
+						"type": "string"
+					},
+					"symbol": {
+						"type": "string"
+					},
+					"decimals": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"name",
+					"symbol",
+					"decimals"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SupportedChainsResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"chains": {
+						"items": {
+							"properties": {
+								"nativeCurrency": {
+									"$ref": "#/components/schemas/NativeCurrency"
+								},
+								"rpcUrl": {
+									"type": "string"
+								},
+								"explorerUrl": {
+									"type": "string"
+								},
+								"currency": {
+									"type": "string"
+								},
+								"testnet": {
+									"type": "boolean"
+								},
+								"name": {
+									"type": "string"
+								},
+								"chainId": {
+									"type": "number",
+									"format": "double"
+								}
+							},
+							"required": [
+								"nativeCurrency",
+								"rpcUrl",
+								"explorerUrl",
+								"currency",
+								"testnet",
+								"name",
+								"chainId"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"success",
+					"chains"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"NativeBalanceResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"balance": {
+						"type": "string"
+					},
+					"error": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"success",
+					"balance"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"NativeBalanceRequest": {
+				"properties": {
+					"walletAddress": {
+						"type": "string"
+					},
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"walletAddress"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TokenBalance": {
+				"properties": {
+					"symbol": {
+						"type": "string"
+					},
+					"balance": {
+						"type": "string"
+					},
+					"formattedBalance": {
+						"type": "string"
+					},
+					"decimals": {
+						"type": "number",
+						"format": "double"
+					},
+					"tokenAddress": {
+						"type": "string"
+					},
+					"isNative": {
+						"type": "boolean"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"symbol",
+					"balance",
+					"formattedBalance",
+					"decimals",
+					"tokenAddress",
+					"isNative"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TokenBalanceResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"tokenBalance": {
+						"$ref": "#/components/schemas/TokenBalance"
+					},
+					"error": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"success"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"BalanceResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"walletAddress": {
+						"type": "string"
+					},
+					"nativeBalance": {
+						"type": "string"
+					},
+					"tokenBalances": {
+						"items": {
+							"$ref": "#/components/schemas/TokenBalance"
+						},
+						"type": "array"
+					},
+					"totalValueUSD": {
+						"type": "string"
+					},
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					},
+					"chainName": {
+						"type": "string"
+					},
+					"error": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"success",
+					"walletAddress",
+					"nativeBalance",
+					"tokenBalances",
+					"chainId",
+					"chainName"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"BalanceRequest": {
+				"properties": {
+					"walletAddress": {
+						"type": "string"
+					},
+					"tokenAddress": {
+						"type": "string"
+					},
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"walletAddress"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MultipleTokensResponse": {
+				"properties": {
+					"success": {
+						"type": "boolean"
+					},
+					"walletAddress": {
+						"type": "string"
+					},
+					"tokenBalances": {
+						"items": {
+							"$ref": "#/components/schemas/TokenBalance"
+						},
+						"type": "array"
+					},
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					},
+					"chainName": {
+						"type": "string"
+					},
+					"error": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"success",
+					"walletAddress",
+					"tokenBalances",
+					"chainId",
+					"chainName"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MultipleTokensRequest": {
+				"properties": {
+					"walletAddress": {
+						"type": "string"
+					},
+					"tokenAddresses": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"chainId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"walletAddress",
+					"tokenAddresses"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"WalletResponse": {
 				"properties": {
 					"success": {
@@ -720,6 +1322,297 @@
 		}
 	},
 	"paths": {
+		"/transactions/send": {
+			"post": {
+				"operationId": "SendTransaction",
+				"responses": {
+					"200": {
+						"description": "Transaction sent successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SendTransactionResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"transactionHash": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+											"fromAddress": "0xa5E0Da329eE5AA03f09228e534953496334080f5",
+											"toAddress": "0x742E6B6D8B6C4e8D8e8D8e8D8e8D8e8D8e8D8e8D",
+											"value": "0.1",
+											"chainId": 8453,
+											"chainName": "Base"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Send transaction (native token or ERC20)",
+				"tags": [
+					"Transaction Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SendTransactionRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/transactions/history": {
+			"post": {
+				"operationId": "GetTransactionHistory",
+				"responses": {
+					"200": {
+						"description": "Transaction history retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/TransactionHistoryResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"transactions": [
+												{
+													"hash": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+													"from": "0xa5E0Da329eE5AA03f09228e534953496334080f5",
+													"to": "0x742E6B6D8B6C4e8D8e8D8e8D8e8D8e8D8e8D8e8D",
+													"value": "1000000000000000000",
+													"timestamp": 1672531200,
+													"blockNumber": 12345678,
+													"status": "success",
+													"gasUsed": "21000",
+													"gasPrice": "20000000000"
+												}
+											],
+											"walletAddress": "0xa5E0Da329eE5AA03f09228e534953496334080f5",
+											"chainId": 8453,
+											"chainName": "Base",
+											"page": 1,
+											"limit": 10,
+											"total": 1
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get transaction history for a wallet",
+				"tags": [
+					"Transaction Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/TransactionHistoryRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/transactions/gas-prices": {
+			"get": {
+				"operationId": "GetGasPrices",
+				"responses": {
+					"200": {
+						"description": "Gas prices retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GasPriceResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"gasPrice": "30.5",
+											"maxFeePerGas": "32.1",
+											"maxPriorityFeePerGas": "1.5",
+											"chainId": 8453,
+											"chainName": "Base"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get current gas prices for a chain",
+				"tags": [
+					"Transaction Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "chainId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/transactions/status": {
+			"get": {
+				"operationId": "GetTransactionStatus",
+				"responses": {
+					"200": {
+						"description": "Transaction status retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/TransactionStatusResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"transactionHash": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+											"status": "success",
+											"blockNumber": 12345678,
+											"confirmations": 15,
+											"gasUsed": "21000"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get transaction status",
+				"tags": [
+					"Transaction Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "chainId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "transactionHash",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/transactions/estimate-gas": {
+			"post": {
+				"operationId": "EstimateGas",
+				"responses": {
+					"200": {
+						"description": "Gas estimated successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"error": {
+											"type": "string"
+										},
+										"gasEstimate": {
+											"type": "string"
+										},
+										"success": {
+											"type": "boolean"
+										}
+									},
+									"required": [
+										"success"
+									],
+									"type": "object"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"gasEstimate": "21000"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Estimate transaction gas",
+				"tags": [
+					"Transaction Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SendTransactionRequest"
+							}
+						}
+					}
+				}
+			}
+		},
 		"/auth/sms/login": {
 			"post": {
 				"operationId": "SmsLogin",
@@ -1771,6 +2664,318 @@
 						"application/json": {
 							"schema": {
 								"$ref": "#/components/schemas/ResendOTPRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/balance/chains": {
+			"get": {
+				"operationId": "GetSupportedChains",
+				"responses": {
+					"200": {
+						"description": "Supported chains retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SupportedChainsResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"chains": [
+												{
+													"chainId": 8453,
+													"name": "Base",
+													"testnet": false,
+													"currency": "ETH",
+													"explorerUrl": "https://basescan.org",
+													"rpcUrl": "https://mainnet.base.org",
+													"nativeCurrency": {
+														"name": "Ethereum",
+														"symbol": "ETH",
+														"decimals": 18
+													}
+												}
+											]
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get all supported chains for balance checking",
+				"tags": [
+					"Balance Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/balance/native": {
+			"post": {
+				"operationId": "GetNativeBalance",
+				"responses": {
+					"200": {
+						"description": "Native balance retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/NativeBalanceResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"balance": "0.125"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get native balance only",
+				"tags": [
+					"Balance Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/NativeBalanceRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/balance/token": {
+			"post": {
+				"operationId": "GetTokenBalance",
+				"responses": {
+					"200": {
+						"description": "Token balance retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/TokenBalanceResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"tokenBalance": {
+												"symbol": "USDC",
+												"balance": "1500000000",
+												"formattedBalance": "1500.00",
+												"decimals": 6,
+												"tokenAddress": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+												"isNative": false,
+												"name": "USD Coin"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get token balance for a specific ERC20 token",
+				"tags": [
+					"Balance Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "walletAddress",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "tokenAddress",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "chainId",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/balance/all": {
+			"post": {
+				"operationId": "GetBalances",
+				"responses": {
+					"200": {
+						"description": "Balances retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/BalanceResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"walletAddress": "0xa5E0Da329eE5AA03f09228e534953496334080f5",
+											"nativeBalance": "0.125",
+											"tokenBalances": [
+												{
+													"symbol": "ETH",
+													"balance": "125000000000000000",
+													"formattedBalance": "0.125",
+													"decimals": 18,
+													"tokenAddress": "0x0000000000000000000000000000000000000000",
+													"isNative": true,
+													"name": "Ethereum"
+												},
+												{
+													"symbol": "USDC",
+													"balance": "1500000000",
+													"formattedBalance": "1500.00",
+													"decimals": 6,
+													"tokenAddress": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+													"isNative": false,
+													"name": "USD Coin"
+												}
+											],
+											"chainId": 8453,
+											"chainName": "Base"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get all balances (native + specified token)",
+				"tags": [
+					"Balance Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/BalanceRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/balance/multiple-tokens": {
+			"post": {
+				"operationId": "GetMultipleTokenBalances",
+				"responses": {
+					"200": {
+						"description": "Multiple token balances retrieved successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/MultipleTokensResponse"
+								},
+								"examples": {
+									"Example 1": {
+										"value": {
+											"success": true,
+											"walletAddress": "0xa5E0Da329eE5AA03f09228e534953496334080f5",
+											"tokenBalances": [
+												{
+													"symbol": "USDC",
+													"balance": "1500000000",
+													"formattedBalance": "1500.00",
+													"decimals": 6,
+													"tokenAddress": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+													"isNative": false,
+													"name": "USD Coin"
+												},
+												{
+													"symbol": "DAI",
+													"balance": "250000000000000000000",
+													"formattedBalance": "250.00",
+													"decimals": 18,
+													"tokenAddress": "0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb",
+													"isNative": false,
+													"name": "Dai Stablecoin"
+												}
+											],
+											"chainId": 8453,
+											"chainName": "Base"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"description": "Get multiple token balances at once",
+				"tags": [
+					"Balance Service"
+				],
+				"security": [
+					{
+						"app": []
+					},
+					{
+						"bearer": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/MultipleTokensRequest"
 							}
 						}
 					}

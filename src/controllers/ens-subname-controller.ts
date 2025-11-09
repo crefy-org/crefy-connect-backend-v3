@@ -124,9 +124,8 @@ export class ENSSubnameController extends Controller {
         this.validateLabelInput(label);
 
         try {
-            const ownershipInfo = await this.ensService.getSubnameOwnershipInfo(
-                label,
-            );
+            const ownershipInfo =
+                await this.ensService.getSubnameOwnershipInfo(label);
 
             console.log('ownership: ', ownershipInfo);
 

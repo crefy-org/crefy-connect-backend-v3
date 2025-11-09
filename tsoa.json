@@ -3,7 +3,7 @@
     "noImplicitAdditionalProperties": "throw-on-extras",
     "controllerPathGlobs": ["src/controllers/**/*.ts"],
     "spec": {
-        "outputDirectory": "dist/docs",
+        "outputDirectory": "src/docs",
         "specVersion": 3,
         "specFileBaseName": "swagger",
         "securityDefinitions": {

@@ -155,6 +155,7 @@ connectDB().then(() => {
                 emailAuth: '/api/auth/email',
                 smsAuth: '/api/auth/sms',
                 ensSubname: '/api/auth/ens',
+                balane: '/api/balance',
                 health: '/api/health',
                 docs: '/api-docs',
             },
@@ -172,7 +173,6 @@ connectDB().then(() => {
         });
     });
 
-    // Global error handling middleware
     // Global error handling middleware
     app.use((error: any, req: Request, res: Response, next: NextFunction) => {
         console.error('Global error handler:', error);
